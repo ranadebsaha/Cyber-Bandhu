@@ -4,10 +4,10 @@ const cors = require("cors");
 const path = require("path");
 require('./db/config');
 const User = require('./db/User');
-// const Admin = require('./db/Admin');
-// const jwt = require('jsonwebtoken');
-// const { json } = require('stream/consumers');
-// const jwtkey = 'rds';
+const Admin = require('./db/Admin');
+const jwt = require('jsonwebtoken');
+const { json } = require('stream/consumers');
+const jwtkey = 'rds';
 
 const app = express();
 
@@ -17,10 +17,10 @@ app.use(cors());
 
 //User Register
 app.post("/register", async (req, resp) => {
-    // let user = await User.findOne({ email: req.body.email });
-    // if (user) {
-    //     resp.send({ result: "User Already Registered" });
-    // } else {
+    let user = await User.findOne({ email: req.body.email });
+    if (user) {
+        resp.send({ result: "User Already Registered" });
+    } else {
        let user = new User(req.body);
         let result = await user.save();
         result = result.toObject();
@@ -30,7 +30,7 @@ app.post("/register", async (req, resp) => {
         } else {
             resp.send({ result: 'Enter Details' });
         }
-    // }
+    }
 });
 
 // User Login
@@ -49,7 +49,7 @@ app.post('/login', async (req, resp) => {
             resp.send({ result: 'No user Found' });
         }
     } else {
-        resp.send({ result: 'No user Found' });
+        resp.send({ result: 'Please Enter valid email and password' });
     }
 });
 
