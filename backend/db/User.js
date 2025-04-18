@@ -6,7 +6,11 @@ const userSchema=new mongoose.Schema({
     gender:String,
     mobile_no:String,
     email:String,
+    landmark:String,
     address:String,
+    city:String,
+    district:String,
+    state:String,
     password:String,
     doc: [
         {
@@ -16,9 +20,11 @@ const userSchema=new mongoose.Schema({
         },
       ],
     history: [{
-      aadhar: String,
+      service_id: String,
+      expert_id:String,
           date: String,
-          cause: String,
+          service_name: String,
+          status:String
     }]
 });
 

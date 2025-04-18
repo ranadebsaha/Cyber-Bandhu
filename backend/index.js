@@ -5,6 +5,9 @@ const path = require("path");
 require('./db/config');
 const User = require('./db/User');
 const Admin = require('./db/Admin');
+const Service = require('./db/Service');
+const Expert = require('./db/Expert');
+const Query = require('./db/Query');
 const jwt = require('jsonwebtoken');
 const { json } = require('stream/consumers');
 const jwtkey = 'rds';
@@ -13,7 +16,6 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 //User Register
 app.post("/register", async (req, resp) => {
@@ -50,6 +52,36 @@ app.post('/login', async (req, resp) => {
         }
     } else {
         resp.send({ result: 'Please Enter valid email and password' });
+    }
+});
+
+//Book Appointment without login or with login
+app.post('/service', async (req, resp) => {
+    if(req.body){
+        let service = new Service(req.body);
+        let result = await service.save();
+        if(result){
+        resp.send(result);
+        }else{
+            resp.send(result);
+        }
+    }else{
+        resp.send({ result: 'Please enter details' });
+    }
+});
+
+//Query from landing page
+app.post('/query', async (req, resp) => {
+    if(req.body){
+        let query = new Query(req.body);
+        let result = await query.save();
+        if(result){
+        resp.send(result);
+        }else{
+            resp.send(result);
+        }
+    }else{
+        resp.send({ result: 'Please enter details' });
     }
 });
 

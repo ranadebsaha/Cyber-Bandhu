@@ -10,14 +10,6 @@ const adminSchema=new mongoose.Schema({
     email:String,
     address:String,
     password:String,
-    center:String,
-    history:[
-        {
-          aadhar: String,
-          date: String,
-          cause: String,
-        },
-      ],
 });
 
 module.exports=mongoose.model("admins",adminSchema);
