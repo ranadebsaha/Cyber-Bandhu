@@ -1,3 +1,14 @@
-const App = () => <>Cyber Bandhu - Build in Progress</>;
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
-export default App;
+export default function App() {
+  return (
+    <header>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </header>
+  );
+}
