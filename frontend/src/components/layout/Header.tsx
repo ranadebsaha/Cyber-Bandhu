@@ -45,21 +45,7 @@ export const Header = () => {
                     </Link>
                     <nav className="hidden md:flex items-center space-x-8">
                         <Link to="/" className="text-gray-700 hover:text-primary-600 font-medium">Home</Link>
-                        <div ref={servicesRef} className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                            <button className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition" onClick={toggleServicesMenu}>
-                                Services
-                                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180 text-primary-600" : ""}`} />
-                            </button>
-                            {isServicesOpen && (
-                                <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                                    <div className="py-1">
-                                        <Link to="/services#form-filling" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>Form Filling</Link>
-                                        <Link to="/services#college-help" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>College Help</Link>
-                                        <Link to="/services#digital-safety" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>Digital Safety</Link>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+                        <Link to="/services" className="text-gray-700 hover:text-primary-600 font-medium">Services</Link>
                         <Link to="/how-it-works" className="text-gray-700 hover:text-primary-600 font-medium">How It Works</Link>
                         <Link to="/join-us" className="text-gray-700 hover:text-primary-600 font-medium">Join Us</Link>
                         <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium">FAQ</Link>
@@ -82,19 +68,7 @@ export const Header = () => {
                     <div className="md:hidden py-4">
                         <div className="flex flex-col space-y-4">
                             <Link to="/" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Home</Link>
-                            <div>
-                                <button className="flex items-center justify-between w-full text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleServicesMenu}>
-                                    Services
-                                    <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
-                                </button>
-                                {isServicesOpen && (
-                                    <div className="pl-4 space-y-2 pt-2">
-                                        <Link to="/services#form-filling" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>Form Filling</Link>
-                                        <Link to="/services#college-help" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>College Help</Link>
-                                        <Link to="/services#digital-safety" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>Digital Safety</Link>
-                                    </div>
-                                )}
-                            </div>
+                            <Link to="/services" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Services</Link>
                             <Link to="/how-it-works" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>How It Works</Link>
                             <Link to="/join-us" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Join Us</Link>
                             <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>FAQ</Link>
