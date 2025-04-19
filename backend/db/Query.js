@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const querySchema=new mongoose.Schema({
     expert_id:String,
+    f_name:String,
+    l_name:String,
     query_name:String,
     query_des:String,
     mobile_no:String,
