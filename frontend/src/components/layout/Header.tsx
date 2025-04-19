@@ -53,15 +53,9 @@ export const Header = () => {
                             {isServicesOpen && (
                                 <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
                                     <div className="py-1">
-                                        <Link to="/services#form-filling" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>
-                                            Form Filling
-                                        </Link>
-                                        <Link to="/services#college-help" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>
-                                            College Help
-                                        </Link>
-                                        <Link to="/services#digital-safety" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>
-                                            Digital Safety
-                                        </Link>
+                                        <Link to="/services#form-filling" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>Form Filling</Link>
+                                        <Link to="/services#college-help" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>College Help</Link>
+                                        <Link to="/services#digital-safety" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setIsServicesOpen(false)}>Digital Safety</Link>
                                     </div>
                                 </div>
                             )}
@@ -87,9 +81,7 @@ export const Header = () => {
                 {isMenuOpen && (
                     <div className="md:hidden py-4">
                         <div className="flex flex-col space-y-4">
-                            <Link to="/" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>
-                                Home
-                            </Link>
+                            <Link to="/" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Home</Link>
                             <div>
                                 <button className="flex items-center justify-between w-full text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleServicesMenu}>
                                     Services
@@ -97,30 +89,16 @@ export const Header = () => {
                                 </button>
                                 {isServicesOpen && (
                                     <div className="pl-4 space-y-2 pt-2">
-                                        <Link to="/services#form-filling" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>
-                                            Form Filling
-                                        </Link>
-                                        <Link to="/services#college-help" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>
-                                            College Help
-                                        </Link>
-                                        <Link to="/services#digital-safety" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>
-                                            Digital Safety
-                                        </Link>
+                                        <Link to="/services#form-filling" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>Form Filling</Link>
+                                        <Link to="/services#college-help" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>College Help</Link>
+                                        <Link to="/services#digital-safety" className="block text-gray-700 hover:text-primary-600 px-3 py-1" onClick={toggleMenu}>Digital Safety</Link>
                                     </div>
                                 )}
                             </div>
-                            <Link to="/how-it-works" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>
-                                How It Works
-                            </Link>
-                            <Link to="/join-us" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>
-                                Join Us
-                            </Link>
-                            <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>
-                                FAQ
-                            </Link>
-                            <Link to="/contact" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>
-                                Contact
-                            </Link>
+                            <Link to="/how-it-works" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>How It Works</Link>
+                            <Link to="/join-us" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Join Us</Link>
+                            <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>FAQ</Link>
+                            <Link to="/contact" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Contact</Link>
                             <Button className="bg-secondary-500 hover:bg-secondary-600 mt-2">Book Now</Button>
                         </div>
                     </div>
