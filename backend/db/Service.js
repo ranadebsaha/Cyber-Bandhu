@@ -29,6 +29,12 @@ const serviceSchema=new mongoose.Schema({
     time:{
         type:String,
       },
+      solved_date:{
+        type:Date,
+      },
+    solved_time:{
+        type:String,
+      },
 });
 
 module.exports=mongoose.model("services",serviceSchema);

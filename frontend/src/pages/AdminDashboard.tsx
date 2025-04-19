@@ -17,8 +17,8 @@ const getPendingServices = async () => {
   try {
     const res = await fetch(`http://localhost:5000/service/pending`, {
       headers: {
-        // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`,
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        // authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`,
       },
     });
     const data = await res.json();
@@ -35,8 +35,8 @@ const getPendingQuery = async () => {
   try {
     const res = await fetch(`http://localhost:5000/query/pending`, {
       headers: {
-        // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`,
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        // authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`,
       },
     });
     const data = await res.json();
@@ -54,8 +54,8 @@ const getActiveExperts = async () => {
   try {
     const res = await fetch(`http://localhost:5000/expert/active`, {
       headers: {
-        // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        // authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`
       },
     });
     const data = await res.json();
