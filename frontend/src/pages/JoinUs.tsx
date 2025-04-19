@@ -1,12 +1,22 @@
+import { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Link } from "react-router-dom";
-import { FileText, GraduationCap, ShieldCheck, Users, CheckCircle, MapPin, Clock, CreditCard, Smartphone, } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Link, useLocation } from "react-router-dom";
+import { FileText, GraduationCap, ShieldCheck, Users, CheckCircle, MapPin, Clock, CreditCard, Smartphone, UserPlus, LogIn, } from "lucide-react";
 
 const JoinUs = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { toast } = useToast();
+    const location = useLocation();
+    const [formData, setFormData] = useState({ fullName: "", email: "", phone: "", dob: "", gender: "", govId: "", idNumber: "", address: "", landmark: "", city: "", district: "", state: "", pincode: "", education: "", experience: "", whyJoin: "" });
+
     const benefits = [
         {
             icon: CreditCard,
@@ -40,6 +50,24 @@ const JoinUs = () => {
         },
     ];
 
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        setTimeout(() => {
+            toast({
+                title: "Application Submitted Successfully",
+                description: "We will review your application and send you an email with further instructions.",
+            });
+            setIsSubmitting(false);
+        }, 2000);
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
     const requirements = [
         "Completed 12th standard or above",
         "Basic computer and smartphone proficiency",
@@ -50,18 +78,40 @@ const JoinUs = () => {
         "Strong commitment to helping others",
     ];
 
+    useEffect(() => {
+        if (location.hash) {
+            const el = document.querySelector(location.hash);
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView();
+                },);
+            }
+        }
+    }, [location]);
+
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-grow">
-                <section className="bg-primary-50 py-16">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-3xl mx-auto text-center">
-                            <h1 className="text-4xl font-bold text-gray-900 mb-4">Join Our Network of Digital Assistants</h1>
-                            <p className="text-lg text-gray-600 mb-6">Help your community while earning income and building valuable skills</p>
-                            <Button asChild className="bg-secondary-500 hover:bg-secondary-600">
-                                <a href="#apply">Apply Now</a>
-                            </Button>
+                <section className="py-16 md:py-24 bg-gradient-to-b from-primary-50 to-white">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Become a Cyber Bandhu Assistant</h1>
+                            <p className="text-xl text-gray-600 mb-8">Join our network of digital assistants and help students across India navigate the digital world while earning.</p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <Button asChild size="lg" className="bg-secondary-500 hover:bg-secondary-600">
+                                    <a href="#apply">
+                                        <UserPlus className="mr-2" />
+                                        Register as Assistant
+                                    </a>
+                                </Button>
+                                <Button asChild size="lg" variant="outline">
+                                    <Link to="/assistant/login">
+                                        <LogIn className="mr-2" />
+                                        Assistant Login
+                                    </Link>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -268,7 +318,8 @@ const JoinUs = () => {
                             <p className="text-gray-600 text-lg">Fill out the form below to start your journey as a Digital Dost</p>
                         </div>
                         <div className="max-w-3xl mx-auto">
-                            <form className="bg-white rounded-lg shadow-md p-8 border border-gray-100">
+                            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-8 border border-gray-100">
+                                <h3 className="text-lg font-semibold mb-4">Personal Information</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                     <div>
                                         <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
@@ -281,6 +332,29 @@ const JoinUs = () => {
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                     <div>
+                                        <Label htmlFor="dob">Date of Birth*</Label>
+                                        <Input id="dob" name="dob" type="date" value={formData.dob} onChange={handleInputChange} required />
+                                    </div>
+                                    <div>
+                                        <Label>Gender*</Label>
+                                        <RadioGroup defaultValue="male" onValueChange={(value) => setFormData(prev => ({ ...prev, gender: value }))} className="flex space-x-4">
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem value="male" id="male" />
+                                                <Label htmlFor="male">Male</Label>
+                                            </div>
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem value="female" id="female" />
+                                                <Label htmlFor="female">Female</Label>
+                                            </div>
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem value="other" id="other" />
+                                                <Label htmlFor="other">Other</Label>
+                                            </div>
+                                        </RadioGroup>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div>
                                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address*</label>
                                         <Input id="email" type="email" placeholder="Your email address" required />
                                     </div>
@@ -289,10 +363,53 @@ const JoinUs = () => {
                                         <Input id="phone" placeholder="Your phone number" required />
                                     </div>
                                 </div>
-                                <div className="mb-6">
-                                    <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">Location (City/District)*</label>
-                                    <Input id="location" placeholder="Your city or district" required />
+                                <h3 className="text-lg font-semibold mb-4">Identity Verification</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="govId">Government ID Type*</Label>
+                                        <Select onValueChange={(value) => setFormData(prev => ({ ...prev, govId: value }))}>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select ID type" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="aadhar">Aadhar Card</SelectItem>
+                                                <SelectItem value="pan">PAN Card</SelectItem>
+                                                <SelectItem value="dl">Driving License</SelectItem>
+                                                <SelectItem value="voter">Voter ID</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="idNumber">ID Number*</Label>
+                                        <Input id="idNumber" name="idNumber" placeholder="Enter ID number" value={formData.idNumber} onChange={handleInputChange} required />
+                                    </div>
                                 </div>
+                                <h3 className="text-lg font-semibold mb-4">Address Details</h3>
+                                <div className="grid grid-cols-1 gap-6">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="address">Street Address*</Label>
+                                        <Input id="address" name="address" placeholder="Enter your street address" value={formData.address} onChange={handleInputChange} required />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                        <div className="space-y-2">
+                                            <Label htmlFor="landmark">Landmark</Label>
+                                            <Input id="landmark" name="landmark" placeholder="Enter a nearby landmark" value={formData.landmark} onChange={handleInputChange} />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label htmlFor="city">City/Town*</Label>
+                                            <Input id="city" name="city" placeholder="Enter your city" value={formData.city} onChange={handleInputChange} required />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label htmlFor="district">District*</Label>
+                                            <Input id="district" name="district" placeholder="Enter your district" value={formData.district} onChange={handleInputChange} required />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label htmlFor="state">State*</Label>
+                                            <Input id="state" name="state" placeholder="Enter your state" value={formData.state} onChange={handleInputChange} required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 className="text-lg font-semibold mb-4">Qualifications & Experience</h3>
                                 <div className="mb-6">
                                     <label htmlFor="education" className="block text-sm font-medium text-gray-700 mb-1">Highest Education*</label>
                                     <select id="education" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" required>
@@ -333,7 +450,8 @@ const JoinUs = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Button type="submit" className="w-full bg-secondary-500 hover:bg-secondary-600">Submit Application</Button>
+                                <Button type="submit" className="w-full bg-secondary-500 hover:bg-secondary-600 mb-4" disabled={isSubmitting}>{isSubmitting ? "Submitting..." : "Submit Application"}</Button>
+                                <p className="text-sm text-gray-500 text-center">After review, approved applicants will receive an email with instructions to set up their account.</p>
                             </form>
                         </div>
                     </div>
