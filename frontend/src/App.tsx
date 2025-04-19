@@ -3,7 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ScrollToTop } from "./components/utils/ScrollToTop";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import HowItWorks from "./pages/HowItWorks";
@@ -11,11 +10,12 @@ import JoinUs from "./pages/JoinUs";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
-import AssistantPortal from "./pages/AssistantPortal";
-import UserLogin from "./pages/UserLogin";
 import AdminLogin from "./pages/AdminLogin";
-import AdminRegister from "./pages/AdminRegister";
 import AdminDashboard from "./pages/AdminDashboard";
+import { ScrollToTop } from "./components/utils/ScrollToTop";
+import UserLogin from "./pages/UserLogin";
+import UserRegister from "./pages/UserRegister";
+import AdminRegister from "./pages/AdminRegister";
 
 const queryClient = new QueryClient();
 
@@ -34,7 +34,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/login" element={<UserLogin />} />
-          <Route path="/assistant" element={<AssistantPortal />} />
+          <Route path="/register" element={<UserRegister />} />
           <Route path="/assistant/login" element={<AdminLogin />} />
           <Route path="/assistant/register" element={<AdminRegister />} />
           <Route path="/assistant/dashboard" element={<AdminDashboard />} />

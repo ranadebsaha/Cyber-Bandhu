@@ -1,15 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card";
 import { Eye, EyeOff, User } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -28,7 +21,6 @@ const UserLogin = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        // Simple user authentication - in a real app, this would be handled securely
         setTimeout(() => {
             if (username === "user" && password === "user123") {
                 toast({
@@ -60,44 +52,20 @@ const UserLogin = () => {
                                 </div>
                             </div>
                             <CardTitle className="text-2xl text-center">User Login</CardTitle>
-                            <CardDescription className="text-center">
-                                Login to access your account
-                            </CardDescription>
+                            <CardDescription className="text-center">Login to access your account</CardDescription>
                         </CardHeader>
                         <CardContent>
                             <form onSubmit={handleLogin}>
                                 <div className="grid gap-4">
                                     <div className="grid gap-2">
-                                        <label htmlFor="username" className="text-sm font-medium">
-                                            Username
-                                        </label>
-                                        <Input
-                                            id="username"
-                                            type="text"
-                                            placeholder="Enter your username"
-                                            value={username}
-                                            onChange={(e) => setUsername(e.target.value)}
-                                            required
-                                        />
+                                        <label htmlFor="username" className="text-sm font-medium">Username</label>
+                                        <Input id="username" type="text" placeholder="Enter your username" value={username} onChange={(e) => setUsername(e.target.value)} required />
                                     </div>
                                     <div className="grid gap-2">
-                                        <label htmlFor="password" className="text-sm font-medium">
-                                            Password
-                                        </label>
+                                        <label htmlFor="password" className="text-sm font-medium">Password</label>
                                         <div className="relative">
-                                            <Input
-                                                id="password"
-                                                type={showPassword ? "text" : "password"}
-                                                placeholder="Enter your password"
-                                                value={password}
-                                                onChange={(e) => setPassword(e.target.value)}
-                                                required
-                                            />
-                                            <button
-                                                type="button"
-                                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-                                                onClick={() => setShowPassword(!showPassword)}
-                                            >
+                                            <Input id="password" type={showPassword ? "text" : "password"} placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                                            <button type="button" className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
                                                 {showPassword ? (
                                                     <EyeOff size={18} />
                                                 ) : (
@@ -115,21 +83,11 @@ const UserLogin = () => {
                         <CardFooter className="flex flex-col gap-4 text-center">
                             <p className="text-sm text-gray-500">
                                 Don't have an account?{" "}
-                                <Link
-                                    to="/register"
-                                    className="text-primary-600 hover:underline"
-                                >
-                                    Register here
-                                </Link>
+                                <Link to="/register" className="text-primary-600 hover:underline"> here</Link>
                             </p>
                             <p className="text-sm text-gray-500">
                                 Are you an assistant?{" "}
-                                <Link
-                                    to="/assistant/login"
-                                    className="text-primary-600 hover:underline"
-                                >
-                                    Login here
-                                </Link>
+                                <Link to="/assistant/login" className="text-primary-600 hover:underline">Login here</Link>
                             </p>
                         </CardFooter>
                     </Card>
