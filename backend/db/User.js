@@ -25,7 +25,11 @@ const userSchema=new mongoose.Schema({
           date: String,
           service_name: String,
           status:String
-    }]
+    }],
+    date:{
+      type:Date,
+      default:Date.now
+    },
 });
 
 module.exports=mongoose.model("users",userSchema);

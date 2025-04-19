@@ -15,7 +15,15 @@ const querySchema=new mongoose.Schema({
     district:String,
     state:String,
     feedback:String,
-    status:String
+    status: {
+        type: String,
+        enum: ["pending", "rejected", "done"],
+        default: "pending"
+    },
+    date:{
+        type:Date,
+        default:Date.now
+      },
 });
 
 module.exports=mongoose.model("queries",querySchema);

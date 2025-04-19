@@ -177,6 +177,36 @@ app.post('/service', async (req, resp) => {
     }
 });
 
+//Update Service status 
+app.put('/service/update/:id', async (req, resp) => {
+    if(req.body){
+        let result = await Service.updateOne(
+            { _id: req.params.id },
+            {
+                $set: req.body
+            }
+        )
+        resp.send(result);
+    }else{
+        resp.send({ result: 'Please enter details' });
+    }
+});
+
+//Update Query status 
+app.put('/query/update/:id', async (req, resp) => {
+    if(req.body){
+        let result = await Query.updateOne(
+            { _id: req.params.id },
+            {
+                $set: req.body
+            }
+        )
+        resp.send(result);
+    }else{
+        resp.send({ result: 'Please enter details' });
+    }
+});
+
 //Query from landing page
 app.post('/query', async (req, resp) => {
     if(req.body){
@@ -189,6 +219,65 @@ app.post('/query', async (req, resp) => {
         }
     }else{
         resp.send({ result: 'Please enter details' });
+    }
+});
+
+//Get all Pending Query in Admin dashboard
+app.get('/query/pending', verifyToken, async (req, resp) => {
+    let result = await Query.find({ status:'pending' });
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+
+//Get all Query in Admin dashboard
+app.get('/query/all', verifyToken, async (req, resp) => {
+    let result = await Query.find();
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+
+//Get all Pending Services
+app.get('/service/pending', verifyToken, async (req, resp) => {
+    let result = await Service.find({ status:'pending' });
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+
+//Get all Services in Admin dashboard
+app.get('/service/all', verifyToken, async (req, resp) => {
+    let result = await Service.find();
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+//Get all active Experts
+app.get('/expert/active', verifyToken, async (req, resp) => {
+    let result = await Expert.find({ status:'active' });
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+
+//Get all Experts
+app.get('/expert/all', verifyToken, async (req, resp) => {
+    let result = await Expert.find();
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
     }
 });
 
