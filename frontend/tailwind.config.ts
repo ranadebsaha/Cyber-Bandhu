@@ -1,4 +1,4 @@
-import { Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
@@ -14,10 +14,10 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {"2xl": "1400px",},
+      screens: { "2xl": "1400px", },
     },
     extend: {
-      fontFamily: {sans: ["Poppins", "sans-serif"],},
+      fontFamily: { sans: ["Poppins", "sans-serif"], },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
