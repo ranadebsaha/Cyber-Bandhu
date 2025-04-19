@@ -177,7 +177,7 @@ app.post('/service', async (req, resp) => {
     }
 });
 
-//Update Service status 
+//Update Service 
 app.put('/service/update/:id', async (req, resp) => {
     if(req.body){
         let result = await Service.updateOne(
@@ -192,7 +192,7 @@ app.put('/service/update/:id', async (req, resp) => {
     }
 });
 
-//Update Query status 
+//Update Query  
 app.put('/query/update/:id', async (req, resp) => {
     if(req.body){
         let result = await Query.updateOne(
@@ -244,7 +244,27 @@ app.get('/query/all', verifyToken, async (req, resp) => {
 
 //Get all Pending Services
 app.get('/service/pending', verifyToken, async (req, resp) => {
-    let result = await Service.find({ status:'pending' });
+    let result = await Service.find({ status:'pending' , expert_id:null });
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+
+//Get all Pending Services by expert_id
+app.get('/service/pending/:id', verifyToken, async (req, resp) => {
+    let result = await Service.find({ status:'pending' , expert_id:req.params.id });
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+
+//Get one Services details by expert_id
+app.get('/expert/pending-service/:id', async (req, resp) => {
+    let result = await Service.find({ status:'pending' , _id:req.params.id });
     if (result) {
         resp.send(result);
     } else {

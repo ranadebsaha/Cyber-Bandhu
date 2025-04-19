@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { UsersRound, Calendar, LogOut, BarChart } from "lucide-react";
+import { UsersRound, Calendar, LogOut, BarChart, AtSignIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const AdminDashboard = () => {
@@ -18,7 +18,7 @@ const getPendingServices = async () => {
     const res = await fetch(`http://localhost:5000/service/pending`, {
       headers: {
         // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`,
+        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTU6Mjk6MjAuMTM0WiJ9LCJpYXQiOjE3NDUwNzY1NjAsImV4cCI6MTc0NTA4Mzc2MH0.XPGwHRzgX5G6nuwxYdNS6EngAKEqa0mS-Z9GXUakqg0`,
       },
     });
     const data = await res.json();
@@ -36,7 +36,7 @@ const getPendingQuery = async () => {
     const res = await fetch(`http://localhost:5000/query/pending`, {
       headers: {
         // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`,
+        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTU6Mjk6MjAuMTM0WiJ9LCJpYXQiOjE3NDUwNzY1NjAsImV4cCI6MTc0NTA4Mzc2MH0.XPGwHRzgX5G6nuwxYdNS6EngAKEqa0mS-Z9GXUakqg0`,
       },
     });
     const data = await res.json();
@@ -55,7 +55,7 @@ const getActiveExperts = async () => {
     const res = await fetch(`http://localhost:5000/expert/active`, {
       headers: {
         // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`
+        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTU6Mjk6MjAuMTM0WiJ9LCJpYXQiOjE3NDUwNzY1NjAsImV4cCI6MTc0NTA4Mzc2MH0.XPGwHRzgX5G6nuwxYdNS6EngAKEqa0mS-Z9GXUakqg0`
       },
     });
     const data = await res.json();
@@ -78,7 +78,12 @@ const getActiveExperts = async () => {
 
     const handleLogout = () => {
         setIsAuthenticated(false);
-        navigate("/admin");
+        navigate("/admin/login");
+    };
+
+    const handleService = () => {
+        setIsAuthenticated(false);
+        navigate("/book-service");
     };
 
 
@@ -93,6 +98,9 @@ const getActiveExperts = async () => {
                         </div>
                         <span className="ml-4 text-sm bg-gray-200 px-2 py-1 rounded">Admin Panel</span>
                     </div>
+                    <Button variant="ghost" size="sm" onClick={handleService}>
+                        <AtSignIcon className="h-4 w-4 mr-2" />Book Service
+                    </Button>
                     <Button variant="ghost" size="sm" onClick={handleLogout}>
                         <LogOut className="h-4 w-4 mr-2" />Logout
                     </Button>
@@ -183,8 +191,8 @@ const getActiveExperts = async () => {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
-                // authorization: `bearer ${localStorage.getItem("token")}`,
-                authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`
+                authorization: `bearer ${localStorage.getItem("token")}`,
+                // authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`
               },
               body: JSON.stringify({ status: newStatus }),
             });
@@ -272,8 +280,8 @@ const getActiveExperts = async () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-        //   authorization: `bearer ${localStorage.getItem("token")}`,
-        authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        // authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTI6MzU6MDAuMTMyWiJ9LCJpYXQiOjE3NDUwNjYxMDAsImV4cCI6MTc0NTA3MzMwMH0.mtgRmBD18O2VHSpPv10TVDTSLYl5pksDIMf_Ngm1vWQ`
         },
         body: JSON.stringify({ status: newStatus }),
       });
