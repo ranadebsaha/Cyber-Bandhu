@@ -24,6 +24,10 @@ const expertSchema=new mongoose.Schema({
     city:String,
     district:String,
     state:String,
+    rating:{
+      type: String,
+      default:0
+    },
     password:{
       type:String,
       required:true,
@@ -40,6 +44,11 @@ const expertSchema=new mongoose.Schema({
       type:Date,
       default:Date.now
     },
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "inactive"
+  },
     doc: [
         {
           name: String,

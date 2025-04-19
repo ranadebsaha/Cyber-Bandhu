@@ -16,6 +16,7 @@ import UserLogin from "./pages/UserLogin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminRegister from "./pages/AdminRegister";
 import AdminDashboard from "./pages/AdminDashboard";
+import BookService from "./pages/BookService";
 
 const queryClient = new QueryClient();
 
@@ -34,10 +35,11 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/login" element={<UserLogin />} />
-          <Route path="/assistant" element={<AssistantPortal />} />
-          <Route path="/assistant/login" element={<AdminLogin />} />
-          <Route path="/assistant/register" element={<AdminRegister />} />
-          <Route path="/assistant/dashboard" element={<AdminDashboard />} />
+          <Route path="/expert" element={<AssistantPortal />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/register" element={<AdminRegister />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/book-service" element={<BookService />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

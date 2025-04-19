@@ -10,6 +10,10 @@ const adminSchema=new mongoose.Schema({
     email:String,
     address:String,
     password:String,
+    date:{
+        type:Date,
+        default:Date.now
+      },
 });
 
 module.exports=mongoose.model("admins",adminSchema);
