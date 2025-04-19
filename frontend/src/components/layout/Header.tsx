@@ -1,34 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
-    const servicesRef = useRef<HTMLDivElement>(null);
-    const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
         if (window.innerWidth >= 768 && isServicesOpen) {
             setIsServicesOpen(false);
         }
-    };
-
-    const toggleServicesMenu = () => {
-        setIsServicesOpen((prev) => !prev);
-    };
-
-    const handleMouseEnter = () => {
-        if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-        setIsServicesOpen(true);
-    };
-
-    const handleMouseLeave = () => {
-        hoverTimeoutRef.current = setTimeout(() => {
-            setIsServicesOpen(false);
-        }, 200);
     };
 
     useEffect(() => {
@@ -51,8 +34,13 @@ export const Header = () => {
                         <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium">FAQ</Link>
                         <Link to="/contact" className="text-gray-700 hover:text-primary-600 font-medium">Contact</Link>
                     </nav>
-                    <div className="hidden md:block">
-                        <Button className="bg-secondary-500 hover:bg-secondary-600">Book Now</Button>
+                    <div className="hidden md:flex items-center space-x-4">
+                        <Button variant="outline" className="border-primary-500 text-primary-600 hover:bg-primary-50">
+                            <Link to="/login">Login</Link>
+                        </Button>
+                        <Button className="bg-secondary-500 hover:bg-secondary-600">
+                            <Link to="/register">Register Now</Link>
+                        </Button>
                     </div>
                     <div className="md:hidden">
                         <button type="button" className="p-2 rounded-md text-gray-700" onClick={toggleMenu}>
@@ -73,7 +61,12 @@ export const Header = () => {
                             <Link to="/join-us" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Join Us</Link>
                             <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>FAQ</Link>
                             <Link to="/contact" className="text-gray-700 hover:text-primary-600 font-medium px-3 py-2" onClick={toggleMenu}>Contact</Link>
-                            <Button className="bg-secondary-500 hover:bg-secondary-600 mt-2">Book Now</Button>
+                            <Button variant="outline" className="border-primary-500 text-primary-600 hover:bg-primary-50">
+                                <Link to="/login">Login</Link>
+                            </Button>
+                            <Button className="bg-secondary-500 hover:bg-secondary-600 mt-2">
+                                <Link to="/register">Register Now</Link>
+                            </Button>
                         </div>
                     </div>
                 )}

@@ -117,16 +117,7 @@ const AdminDashboard = () => {
                                                         <td className="py-2">{booking.service}</td>
                                                         <td className="py-2">{booking.date}</td>
                                                         <td className="py-2">
-                                                            <span
-                                                                className={`px-2 py-1 rounded-full text-xs ${booking.status === "Confirmed"
-                                                                    ? "bg-green-100 text-green-800"
-                                                                    : booking.status === "Pending"
-                                                                        ? "bg-yellow-100 text-yellow-800"
-                                                                        : "bg-red-100 text-red-800"
-                                                                    }`}
-                                                            >
-                                                                {booking.status}
-                                                            </span>
+                                                            <span className={`px-2 py-1 rounded-full text-xs ${booking.status === "Confirmed" ? "bg-green-100 text-green-800" : booking.status === "Pending" ? "bg-yellow-100 text-yellow-800" : "bg-red-100 text-red-800"}`}>{booking.status}</span>
                                                         </td>
                                                         <td className="py-2">
                                                             <Button variant="link" size="sm">View Details</Button>
