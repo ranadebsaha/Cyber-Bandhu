@@ -55,6 +55,113 @@ app.post('/login', async (req, resp) => {
     }
 });
 
+//One User Fetch
+app.get('/user/:id', verifyToken, async (req, resp) => {
+    let result = await User.findOne({ _id: req.params.id });
+    if (result) {
+        resp.send(result);
+    } else {
+        resp.send({ result: 'no record found' });
+    }
+});
+
+//One User Update
+app.put('/user/:id', verifyToken, async (req, resp) => {
+    let result = await User.updateOne(
+        { _id: req.params.id },
+        {
+            $set: req.body
+        }
+    )
+    resp.send(result);
+});
+
+//Admin Register
+app.post("/admin/register", async (req, resp) => {
+    let admin = await Admin.findOne({ email: req.body.email });
+    if (admin) {
+        resp.send({ result: "Admin Already Registered" });
+    } else {
+        admin = new Admin(req.body);
+        let result = await admin.save();
+        result = result.toObject();
+        delete result.password;
+        if (result) {
+            resp.send(result);
+        } else {
+            resp.send(result);
+        }
+    }
+});
+
+//Admin Login
+app.post('/admin/login', async (req, resp) => {
+    if (req.body.email && req.body.password) {
+        let admin = await Admin.findOne(req.body).select("-password");
+        if (admin) {
+            if (admin.dept == req.body.dept) {
+                jwt.sign({ admin }, jwtkey, { expiresIn: "2h" }, (err, token) => {
+                    if (err) {
+                        resp.send({ result: 'Something went wrong' });
+                    } else {
+                        resp.send({ admin, auth: token });
+                    }
+                });
+            } else {
+                resp.send({ result: 'No user Found' });
+            }
+
+        } else {
+            resp.send({ result: 'No user Found' });
+        }
+    } else {
+        resp.send({ result: 'No user Found' });
+    }
+});
+
+//Expert Register
+app.post("/expert/register", async (req, resp) => {
+    let expert = await Expert.findOne({ email: req.body.email });
+    if (expert) {
+        resp.send({ result: "Expert Already Registered" });
+    } else {
+        expert = new Expert(req.body);
+        let result = await expert.save();
+        result = result.toObject();
+        delete result.password;
+        if (result) {
+            resp.send(result);
+        } else {
+            resp.send(result);
+        }
+    }
+});
+
+//Expert Login
+app.post('/expert/login', async (req, resp) => {
+    if (req.body && (req.body.email && req.body.password)) {
+        let expert = await Expert.findOne(req.body).select("-password");
+        if (expert) {
+            if (expert.verified == true) {
+                jwt.sign({ expert }, jwtkey, { expiresIn: "2h" }, (err, token) => {
+                    if (err) {
+                        resp.send({ result: 'Something went wrong' });
+                    } else {
+                        resp.send({ expert, auth: token });
+                    }
+                });
+            } else {
+                resp.send({ result: 'You are not Verified. Please contact our admin or mail us.' });
+            }
+
+        } else {
+            resp.send({ result: 'No user Found' });
+        }
+    } else {
+        resp.send({ result: 'Enter valid details' });
+    }
+});
+
 //Book Appointment without login or with login
 app.post('/service', async (req, resp) => {
     if(req.body){
