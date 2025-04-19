@@ -244,7 +244,7 @@ app.get('/query/all', verifyToken, async (req, resp) => {
 
 //Get all Pending Services
 app.get('/service/pending', verifyToken, async (req, resp) => {
-    let result = await Service.find({ status:'pending' , expert_id:"" });
+    let result = await Service.find({ status:'pending' , expert_id:null });
     if (result) {
         resp.send(result);
     } else {

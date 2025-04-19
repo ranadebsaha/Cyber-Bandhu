@@ -13,14 +13,14 @@ const ExpertDashboard = () => {
     const [pendingServicesData, setPendingServicesData] = useState([]);
     const [myPendingServicesData, setMyPendingServicesData] = useState([]);
     const { toast } = useToast();
-    const expertId = localStorage.getItem("expert_id");
+    // const expertId = localStorage.getItem("expert_id");
 
     const getPendingServices = async () => {
         try {
             const res = await fetch(`http://localhost:5000/service/pending`, {
                 headers: {
-                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-                    // authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTQ6MzU6MzMuMjg2WiJ9LCJpYXQiOjE3NDUwNzMzMzMsImV4cCI6MTc0NTA4MDUzM30.Jd30UgjHsWSo9eaIYNpPNO7las9dK_5Qn8bS8qxCuoc`,
+                    // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                    authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTU6NTU6MTYuNzg3WiJ9LCJpYXQiOjE3NDUwNzgxMTYsImV4cCI6MTc0NTA4NTMxNn0.UoAD-E40rxnZCG5Sr38Q8nx7HeiUrLcinABMp2cBoew`,
                 },
             });
             const data = await res.json();
@@ -36,11 +36,11 @@ const ExpertDashboard = () => {
 
     const getMyPendingServices = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/service/pending/${expertId}`, {
-            // const res = await fetch(`http://localhost:5000/service/pending/6803303885661ad3ef87f7a5`, {
+            // const res = await fetch(`http://localhost:5000/service/pending/${expertId}`, {
+            const res = await fetch(`http://localhost:5000/service/pending/6803303885661ad3ef87f7a5`, {
                 headers: {
-                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-                    // authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTQ6MzU6MzMuMjg2WiJ9LCJpYXQiOjE3NDUwNzMzMzMsImV4cCI6MTc0NTA4MDUzM30.Jd30UgjHsWSo9eaIYNpPNO7las9dK_5Qn8bS8qxCuoc`,
+                    // authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                    authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTU6NTU6MTYuNzg3WiJ9LCJpYXQiOjE3NDUwNzgxMTYsImV4cCI6MTc0NTA4NTMxNn0.UoAD-E40rxnZCG5Sr38Q8nx7HeiUrLcinABMp2cBoew`,
                 },
             });
             const data = await res.json();
@@ -60,10 +60,10 @@ const ExpertDashboard = () => {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
-              authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            //   authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTQ6MzU6MzMuMjg2WiJ9LCJpYXQiOjE3NDUwNzMzMzMsImV4cCI6MTc0NTA4MDUzM30.Jd30UgjHsWSo9eaIYNpPNO7las9dK_5Qn8bS8qxCuoc`,
+            //   authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+              authorization: `bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY4MDM0Y2VhYmFjNmFjZmU2M2FlZjE4ZiIsImVtYWlsIjoicmRzQHIuY29tIiwiZG9jIjpbXSwiaGlzdG9yeSI6W10sIl9fdiI6MCwiZGF0ZSI6IjIwMjUtMDQtMTlUMTU6NTU6MTYuNzg3WiJ9LCJpYXQiOjE3NDUwNzgxMTYsImV4cCI6MTc0NTA4NTMxNn0.UoAD-E40rxnZCG5Sr38Q8nx7HeiUrLcinABMp2cBoew`,
             },
-            body: JSON.stringify({ expert_id: expertId }),
+            body: JSON.stringify({ expert_id: '6803303885661ad3ef87f7a5' }),
           });
       
           const result = await res.json();

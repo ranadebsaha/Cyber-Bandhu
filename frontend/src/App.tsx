@@ -41,7 +41,7 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/login" element={<UserLogin />} />
 
-          <Route path="/expert" element={<AssistantPortal />} />
+          {/* <Route path="/expert" element={<AssistantPortal />} /> */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/register" element={<AdminRegister />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -51,8 +51,8 @@ const App = () => (
 
           <Route path="/register" element={<UserRegister />} />
           <Route path="/assistant/login" element={<AdminLogin />} />
-          <Route path="/assistant/register" element={<AdminRegister />} />
-          <Route path="/assistant/dashboard" element={<AdminDashboard />} />
+          {/* <Route path="/assistant/register" element={<AdminRegister />} /> */}
+          {/* <Route path="/assistant/dashboard" element={<AdminDashboard />} /> */}
 
           <Route path="*" element={<NotFound />} />
         </Routes>

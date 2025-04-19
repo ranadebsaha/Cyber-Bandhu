@@ -26,13 +26,13 @@ const AdminLogin = () => {
 
     setTimeout(() => {
       if (
-        (email === "admin@example.com" && password === "admin123" && role === "admin") || (email === "assistant@example.com" && password === "assistant123" && role === "assistant")
+        (email === "admin@g.com" && password === "admin123" && role === "admin") || (email === "expert@g.com" && password === "expert123" && role === "assistant")
       ) {
         toast({
           title: "Login successful",
           description: `Welcome back, ${role === "admin" ? "Admin" : "Assistant"}!`,
         });
-        navigate("/assistant/dashboard");
+        navigate("/admin/dashboard");
       } else {
         toast({
           title: "Login failed",
