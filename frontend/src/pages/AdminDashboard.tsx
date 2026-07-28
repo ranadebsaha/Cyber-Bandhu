@@ -6,6 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { UsersRound, Calendar, LogOut, BarChart, AtSignIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/components/ui/use-toast";
+import { apiUrl } from "@/lib/api";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const AdminDashboard = () => {
 
   const getPendingServices = async () => {
     try {
-      const res = await fetch(`/api/service/pending`, {
+      const res = await fetch(apiUrl(`/api/service/pending`), {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -39,7 +40,7 @@ const AdminDashboard = () => {
 
   const getPendingQuery = async () => {
     try {
-      const res = await fetch(`/api/query/pending`, {
+      const res = await fetch(apiUrl(`/api/query/pending`), {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -54,7 +55,7 @@ const AdminDashboard = () => {
 
   const getActiveExperts = async () => {
     try {
-      const res = await fetch(`/api/expert/active`, {
+      const res = await fetch(apiUrl(`/api/expert/active`), {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -69,7 +70,7 @@ const AdminDashboard = () => {
 
   const getAllServices = async () => {
     try {
-      const res = await fetch(`/api/service/all`, {
+      const res = await fetch(apiUrl(`/api/service/all`), {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -243,7 +244,7 @@ const AdminDashboard = () => {
                                   const newStatus = (form.elements.namedItem("status") as HTMLSelectElement).value;
                                   try {
                                     const res = await fetch(
-                                      `/api/service/update/${booking._id}`,
+                                      apiUrl(`/api/service/update/${booking._id}`),
                                       {
                                         method: "PUT",
                                         headers: {
@@ -340,7 +341,7 @@ const AdminDashboard = () => {
                                   const newStatus = (form.elements.namedItem("status") as HTMLSelectElement).value;
                                   try {
                                     const res = await fetch(
-                                      `/api/query/update/${booking._id}`,
+                                      apiUrl(`/api/query/update/${booking._id}`),
                                       {
                                         method: "PUT",
                                         headers: {

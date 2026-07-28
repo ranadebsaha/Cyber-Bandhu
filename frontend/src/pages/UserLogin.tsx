@@ -7,6 +7,7 @@ import { Eye, EyeOff, User } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { useToast } from "@/components/ui/use-toast";
+import { apiUrl } from "@/lib/api";
 
 const UserLogin = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,7 @@ const UserLogin = () => {
     }
 
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch(apiUrl("/api/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

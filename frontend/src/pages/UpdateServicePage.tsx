@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { apiUrl } from "@/lib/api";
 
 const UpdateServicePage = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const UpdateServicePage = () => {
     if (!id) return;
     const fetchService = async () => {
       try {
-        const res = await fetch(`/api/expert/pending-service/${id}`, {
+        const res = await fetch(apiUrl(`/api/expert/pending-service/${id}`), {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -65,7 +66,7 @@ const UpdateServicePage = () => {
         solved_date: form.solved_date,
         solved_time: form.solved_time,
       };
-      const res = await fetch(`/api/service/update/${id}`, {
+      const res = await fetch(apiUrl(`/api/service/update/${id}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(updatePayload),
@@ -77,7 +78,7 @@ const UpdateServicePage = () => {
         setLoading(false);
         return;
       }
-      const userRes = await fetch(`/api/user/${service[0].user_id}`, {
+      const userRes = await fetch(apiUrl(`/api/user/${service[0].user_id}`), {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!userRes.ok) {
@@ -95,7 +96,7 @@ const UpdateServicePage = () => {
         return entry;
       });
 
-      const userUpdateRes = await fetch(`/api/user/${service[0].user_id}`, {
+      const userUpdateRes = await fetch(apiUrl(`/api/user/${service[0].user_id}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ history: updatedHistory }),

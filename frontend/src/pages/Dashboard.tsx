@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { History, MapPin, Loader2, CheckCircle, Calendar, Clock, CheckCircle2, Menu, X, UsersRound, LogOut } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import { apiUrl } from "@/lib/api";
 
 const UserDashboard = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const UserDashboard = () => {
   // Fetch fresh user profile
   const fetchUserProfile = async () => {
     try {
-      const res = await fetch(`/api/user/${user._id}`, {
+      const res = await fetch(apiUrl(`/api/user/${user._id}`), {
         headers: { authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -194,7 +195,7 @@ const UserDashboard = () => {
         serviceBody.location = serviceForm.location;
       }
 
-      const resService = await fetch("/api/service", {
+      const resService = await fetch(apiUrl("/api/service"), {
         method: "POST",
         headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
         body: JSON.stringify(serviceBody),
@@ -217,7 +218,7 @@ const UserDashboard = () => {
 
       const updatedHistory = [...(user.history || []), newHistoryEntry];
 
-      const resUserUpdate = await fetch(`/api/user/${user._id}`, {
+      const resUserUpdate = await fetch(apiUrl(`/api/user/${user._id}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
         body: JSON.stringify({ history: updatedHistory }),
@@ -265,7 +266,7 @@ const UserDashboard = () => {
   const submitProfileUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch(`/api/user/${user._id}`, {
+      const res = await fetch(apiUrl(`/api/user/${user._id}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json", authorization: `Bearer ${token}` },
         body: JSON.stringify(updateForm),

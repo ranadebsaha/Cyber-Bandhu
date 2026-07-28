@@ -7,6 +7,7 @@ import { Mail, Phone, MessageSquare, MapPin, Send, CheckCircle2 } from "lucide-r
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import { apiUrl } from "@/lib/api";
 
 const Contact = () => {
   const [f_name, setF_name] = useState("");
@@ -30,7 +31,7 @@ const Contact = () => {
 
     setIsSubmitting(true);
     try {
-      let result = await fetch("/api/query", {
+      let result = await fetch(apiUrl("/api/query"), {
         method: "POST",
         body: JSON.stringify({ f_name, l_name, mobile_no, email, query_name, query_des }),
         headers: { "Content-Type": "application/json" },

@@ -16,6 +16,7 @@ import { Footer } from "@/components/layout/Footer";
 import { useToast } from "@/components/ui/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { apiUrl } from "@/lib/api";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -32,10 +33,10 @@ const AdminLogin = () => {
     setIsLoading(true);
     setError("");
 
-    let loginEndpoint = "/api/admin/login";
+    let loginEndpoint = apiUrl("/api/admin/login");
     let loginRole = role;
     if (role === "expert") {
-      loginEndpoint = "/api/expert/login";
+      loginEndpoint = apiUrl("/api/expert/login");
       loginRole = "expert";
     }
 

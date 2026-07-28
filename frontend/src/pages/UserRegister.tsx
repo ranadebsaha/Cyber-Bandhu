@@ -7,6 +7,7 @@ import { Eye, EyeOff, UserPlus } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { useToast } from "@/components/ui/use-toast";
+import { apiUrl } from "@/lib/api";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({ 
@@ -59,7 +60,7 @@ const UserRegister = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(apiUrl("/api/register"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -7,6 +7,7 @@ import { Mail, MapPin, Phone, MessageSquare } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import { apiUrl } from "@/lib/api";
 
 const BookService = () => {
 
@@ -34,7 +35,7 @@ const BookService = () => {
       setError(true);
       return;
     }
-    let result = await fetch("/api/service", {
+    let result = await fetch(apiUrl("/api/service"), {
       method: "POST",
       body: JSON.stringify({ user_name,landmark ,mobile_no ,email,time,date ,address ,city ,district,state,service_name,service_des}),
       headers: { "Content-Type": "application/json" },

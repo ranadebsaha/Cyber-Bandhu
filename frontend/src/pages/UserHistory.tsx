@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Star, ArrowLeft } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 const UserHistory = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const UserHistory = () => {
   // Fetch user history
   const fetchHistory = async () => {
     try {
-      const res = await fetch(`/api/user/${user._id}`, {
+      const res = await fetch(apiUrl(`/api/user/${user._id}`), {
         headers: { authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -55,7 +56,7 @@ const UserHistory = () => {
           historyData.map(async (entry: any) => {
             try {
               const serviceRes = await fetch(
-                `/api/service/details/${entry.service_id}`,
+                apiUrl(`/api/service/details/${entry.service_id}`),
                 {
                   headers: { authorization: `Bearer ${token}` },
                 }
@@ -153,7 +154,7 @@ const UserHistory = () => {
       }
 
       const res = await fetch(
-        `/api/service/update/${serviceId}`,
+        apiUrl(`/api/service/update/${serviceId}`),
         {
           method: "PUT",
           headers: {
@@ -218,7 +219,7 @@ const UserHistory = () => {
       }
 
       const res = await fetch(
-        `/api/service/update/${serviceId}`,
+        apiUrl(`/api/service/update/${serviceId}`),
         {
           method: "PUT",
           headers: {
