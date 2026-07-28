@@ -17,6 +17,17 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Accept frontend requests that include a leading `/api` prefix by
+// rewriting the URL so existing routes (e.g., `/admin/login`) continue
+// to work. This allows deployed frontends that post to `/api/...` to
+// reach the current handlers without changing all route definitions.
+app.use((req, res, next) => {
+    if (req.url && req.url.startsWith('/api')) {
+        req.url = req.url.replace(/^\/api/, '') || '/';
+    }
+    next();
+});
+
 //User Register
 app.post("/register", async (req, resp) => {
     let user = await User.findOne({ email: req.body.email });
